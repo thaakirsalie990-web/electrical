@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <!-- =====================
+   <!-- =====================
             Header Section
     ========================== -->
     <header class="header">
@@ -26,14 +26,28 @@
                 <i class="fa-solid fa-mountain header__logo-icon"></i>
                 <span class="header__logo-text">ICEBERG</span>
             </a>
+
             <nav class="header__nav">
                 <ul class="header__menu">
-                    <li class="header__item"><a href="#" class="header__link header__link--active">Home</a></li>
-                    <li class="header__item"><a href="#" class="header__link">Services <i class="fa-solid fa-chevron-down"></i></a></li>
-                    <li class="header__item"><a href="#" class="header__link">About</a></li>
-                    <li class="header__item"><a href="#" class="header__link">Testimonials</a></li>
+                    <li class="header__item"><a href="#" class="header__link">Home</a></li>
+                    
+                    <!--  Service Section -->
+                    <li class="header__item header__item--dropdown">
+                        <a href="#" class="header__link header__link--active">Services <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="header__dropdown-menu">
+                            <li><a href="#residential">Residential Services</a></li>
+                            <li><a href="#commercial">Commercial Services</a></li>
+                            <li><a href="#industrial">Industrial Services</a></li>
+                            <li><a href="#emergency">Emergency Repairs</a></li>
+                            <li><a href="#ev">EV Charger Installation</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="header__item"><a href="#about" class="header__link">About</a></li>
+                    <li class="header__item"><a href="#testimonials" class="header__link">Testimonials</a></li>
                 </ul>
             </nav>
+
             <div class="header__actions">
                 <a href="#" class="btn btn--outline">Call Us</a>
                 <button class="header__hamburger" aria-label="Toggle menu">
@@ -41,10 +55,24 @@
                 </button>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <ul class="mobile-menu__list">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
+                <li class="mobile-menu__item--has-submenu">
+                    <div class="mobile-menu__link-wrapper">
+                        <a href="#">Services</a>
+                        <button class="mobile-dropdown-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    <ul class="mobile-menu__sublist">
+                        <li><a href="#residential">Residential Services</a></li>
+                        <li><a href="#commercial">Commercial Services</a></li>
+                        <li><a href="#industrial">Industrial Services</a></li>
+                        <li><a href="#emergency">Emergency Repairs</a></li>
+                        <li><a href="#ev">EV Charger Installation</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Testimonials</a></li>
                 <li><a href="#" class="btn btn--primary btn--full">Call Us</a></li>
@@ -107,7 +135,7 @@
         </section>
 
         <!-- =====================
-            About / Intro Section
+            About Section
         ========================== -->
         <section class="about">
             <div class="container about__container">
@@ -122,26 +150,56 @@
         </section>
 
         <!-- =====================
-            Service Section
+            Service Cards Section
         ========================== -->
-        <section class="service-cards">
+        <section class="service-cards" id="services">
             <div class="container service-cards__container">
-                <!-- Residential Card -->
-                <a href="#" class="card card--residential">
+                
+                <!-- 1. Residential -->
+                <a href="#" class="card card--residential" id="residential">
                     <div class="card__content">
                         <h3 class="card__title">Residential Services</h3>
                         <p class="card__desc">Powering peace of mind in every room.</p>
                         <span class="card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <!-- Commercial Card -->
-                <a href="#" class="card card--commercial">
+
+                <!-- 2. Commercial -->
+                <a href="#" class="card card--commercial" id="commercial">
                     <div class="card__content">
                         <h3 class="card__title">Commercial Services</h3>
                         <p class="card__desc">Keeping your business up and running.</p>
                         <span class="card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
+
+                <!-- 3. Industrial -->
+                <a href="#" class="card card--industrial" id="industrial">
+                    <div class="card__content">
+                        <h3 class="card__title">Industrial Services</h3>
+                        <p class="card__desc">Heavy-duty solutions for large facilities.</p>
+                        <span class="card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- 4. Emergency -->
+                <a href="#" class="card card--emergency" id="emergency">
+                    <div class="card__content">
+                        <h3 class="card__title">Emergency Repairs</h3>
+                        <p class="card__desc">24/7 rapid response when you need it most.</p>
+                        <span class="card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- 5. EV Chargers -->
+                <a href="#" class="card card--ev" id="ev">
+                    <div class="card__content">
+                        <h3 class="card__title">EV Charger Installation</h3>
+                        <p class="card__desc">Future-proof your home with Level 2 charging.</p>
+                        <span class="card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
             </div>
         </section>
 
@@ -195,7 +253,7 @@
 
                 <div class="testimonials__grid">
 
-                    <!-- Testimonial 1 (Dark Blue) -->
+                    <!-- Testimonial 1 Dark Blue -->
                     <div class="testi-card testi-card--primary">
                         <div class="testi-card__icon">
                             <i class="fa-solid fa-quote-right"></i>
@@ -217,7 +275,7 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial 2 (White) -->
+                    <!-- Testimonial 2 White -->
                     <div class="testi-card testi-card--white">
                         <div class="testi-card__icon">
                             <i class="fa-solid fa-quote-right"></i>
@@ -311,6 +369,6 @@
         </div>
     </footer>
 
-    <script src="script/script.js"></script>
+    <script src="script/script.js" defer></script>
 </body>
 </html>

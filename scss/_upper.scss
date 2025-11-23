@@ -258,6 +258,115 @@ input, textarea {
 }
 
 /* =====================
+    Desktop Dropdown
+========================= */
+.header__item--dropdown {
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: -10px; 
+
+    &:hover .header__dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+}
+
+.header__dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: $space-2 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 101;
+    border: 1px solid $color-border;
+
+    li {
+        display: block;
+        
+        a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            font-size: $font-sm;
+            color: $color-text-muted;
+            transition: 0.2s;
+            font-weight: 500;
+
+            &:hover {
+                background-color: $color-bg-light;
+                color: $color-primary;
+            }
+        }
+    }
+}
+
+/* =====================
+    Mobile Dropdown
+========================= */
+.mobile-menu__item--has-submenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu__link-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    a {
+        flex-grow: 1;
+    }
+}
+
+.mobile-dropdown-toggle {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    color: $color-text;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &.active {
+        transform: rotate(180deg);
+        color: $color-primary;
+    }
+}
+
+.mobile-menu__sublist {
+    display: none; // Hidden by default
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: $space-4;
+    margin-top: $space-3;
+    margin-bottom: $space-3;
+    border-left: 2px solid $color-border;
+
+    &.open {
+        display: flex;
+    }
+
+    a {
+        font-size: 1rem; 
+        font-weight: 500;
+        color: $color-text-muted;
+        
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+/* =====================
       Hero Section
 ========================= */
 .hero {

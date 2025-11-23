@@ -3,11 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('.mobile-menu');
     const icon = hamburger.querySelector('i');
 
-    // Toggle mobile menu
+    // 1. Toggle Main Mobile Menu
     hamburger.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         
-        // Switch icon between bars and times (X)
         if (mobileMenu.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
@@ -17,26 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close menu when clicking a link
-    const mobileLinks = document.querySelectorAll('.mobile-menu__list a');
+    // 2. Toggle Mobile Submenu (Services Dropdown)
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent link default if wrapper is a link
+            
+            // Toggle the arrow rotation
+            toggle.classList.toggle('active');
+            
+            const sublist = toggle.closest('.mobile-menu__item--has-submenu').querySelector('.mobile-menu__sublist');
+            if (sublist) {
+                sublist.classList.toggle('open');
+            }
+        });
+    });
+
+    // 3. Close menu when clicking a normal link (optional)
+    const mobileLinks = document.querySelectorAll('.mobile-menu__list a:not([href="#"])');
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
-        });
-    });
-
-    // Smooth scroll (optional enhancement)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
         });
     });
 });

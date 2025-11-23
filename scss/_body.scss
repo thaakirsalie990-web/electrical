@@ -282,7 +282,7 @@ $break-xl: 1280px;
 
 
 /* =====================
-   Service Cards Section
+   Service Cards
 ========================= */
 .service-cards {
     padding: 0 0 $space-6 0;
@@ -291,9 +291,29 @@ $break-xl: 1280px;
         display: grid;
         grid-template-columns: 1fr;
         gap: $space-4;
-
+        
+        // Tablet: 2 columns
         @media (min-width: $break-md) {
             grid-template-columns: 1fr 1fr;
+        }
+
+        // Desktop: Span logic to make 5 items look good
+        // (Row 1: 2 items, Row 2: 3 items)
+        @media (min-width: $break-lg) {
+            grid-template-columns: repeat(6, 1fr);
+            
+            // First two cards span 3 columns each (half width)
+            > :nth-child(1),
+            > :nth-child(2) {
+                grid-column: span 3;
+            }
+
+            // Last three cards span 2 columns each (third width)
+            > :nth-child(3),
+            > :nth-child(4),
+            > :nth-child(5) {
+                grid-column: span 2;
+            }
         }
     }
 }
@@ -309,6 +329,7 @@ $break-xl: 1280px;
     color: white;
     text-align: left;
     transition: transform 0.3s ease;
+    text-decoration: none; 
 
     &:hover {
         transform: translateY(-5px);
@@ -319,13 +340,18 @@ $break-xl: 1280px;
         }
     }
 
-    // Overlay gradient
+    // Gradient Overlay
     &::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
         z-index: 1;
+        transition: opacity 0.3s;
+    }
+
+    &:hover::before {
+        background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.9));
     }
 
     &__content {
@@ -338,12 +364,14 @@ $break-xl: 1280px;
         font-size: $font-lg;
         font-weight: 700;
         margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     &__desc {
         font-size: $font-sm;
-        opacity: 0.9;
+        opacity: 0.95;
         margin-bottom: $space-2;
+        font-weight: 500;
     }
 
     &__arrow {
@@ -352,7 +380,7 @@ $break-xl: 1280px;
         justify-content: center;
         width: 40px;
         height: 40px;
-        border: 2px solid rgba(255,255,255,0.5);
+        border: 2px solid rgba(255,255,255,0.6);
         border-radius: 50%;
         transition: 0.3s;
         
@@ -361,13 +389,26 @@ $break-xl: 1280px;
         }
     }
     
-    // Background Images
+    /* Background Images for all 5 Services */
+    
     &--residential {
         background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop') no-repeat center center/cover;
     }
 
     &--commercial {
         background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
+    }
+
+    &--industrial {
+        background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    }
+
+    &--emergency {
+        background: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
+    }
+
+    &--ev {
+        background: url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
     }
 }
 
