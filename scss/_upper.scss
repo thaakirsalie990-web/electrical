@@ -45,6 +45,10 @@ $break-xl: 1280px;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $font-family;
     color: $color-text;
