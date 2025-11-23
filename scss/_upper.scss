@@ -1,0 +1,388 @@
+/* =====================
+      Variables
+========================= */
+// Colors
+$color-primary: #00509D; // Bright Navy
+$color-primary-dark: #002952; // Dark Navy
+$color-secondary: #ffffff;
+$color-bg-light: #F5F7FA;
+$color-bg-overlay: rgba(0, 0, 0, 0.4);
+$color-text: #1F2937;
+$color-text-muted: #6B7280;
+$color-border: #E5E7EB;
+
+// Spacing Scale
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 1rem;
+$space-4: 1.5rem;
+$space-5: 2rem;
+$space-6: 3rem;
+$space-8: 4rem;
+
+// Typography
+$font-family: 'Inter', sans-serif;
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-base: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.75rem;
+$font-2xl: 2.5rem;
+$font-3xl: 3.5rem;
+
+// Breakpoints
+$break-sm: 480px;
+$break-md: 768px;
+$break-lg: 1024px;
+$break-xl: 1280px;
+
+/* =====================
+      Reset & Base
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-family;
+    color: $color-text;
+    line-height: 1.5;
+    background-color: $color-secondary;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    padding: 0 $space-4;
+    margin: 0 auto;
+
+    @media (min-width: $break-lg) {
+        max-width: 1200px;
+    }
+}
+
+/* =====================
+      Buttons & Inputs
+========================= */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: $font-sm;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+
+    &--primary {
+        background-color: $color-primary-dark;
+        color: $color-secondary;
+
+        &:hover {
+            background-color: lighten($color-primary-dark, 5%);
+        }
+    }
+
+    &--outline {
+        background-color: transparent;
+        border: 1px solid #ccc;
+        color: $color-text;
+        
+        &:hover {
+            border-color: $color-primary;
+            color: $color-primary;
+        }
+    }
+
+    &--white {
+        background-color: $color-secondary;
+        color: $color-primary-dark;
+        font-weight: 600;
+    }
+    
+    &--shadow {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    &--full {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid transparent;
+    background-color: #F3F4F6; // Light grey input bg
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: $font-sm;
+    margin-top: 0.25rem;
+    transition: 0.2s;
+
+    &:focus {
+        outline: none;
+        background-color: #fff;
+        border-color: $color-primary;
+    }
+}
+
+/* =====================
+      Header
+========================= */
+.header {
+    padding: $space-3 $space-4;
+    background: $color-secondary;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        color: #00B4D8; 
+        font-weight: 700;
+        font-size: $font-lg;
+        
+        &-text {
+            color: $color-primary-dark;
+        }
+    }
+
+    &__nav {
+        display: none;
+
+        @media (min-width: $break-md) {
+            display: block;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        gap: $space-5;
+    }
+
+    &__link {
+        font-size: $font-sm;
+        color: $color-text-muted;
+        font-weight: 500;
+
+        &:hover, &--active {
+            color: $color-primary-dark;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-2;
+        align-items: center;
+        
+        .btn {
+            display: none;
+            @media (min-width: $break-md) {
+                display: inline-block;
+                padding: 0.5rem 1.25rem;
+            }
+        }
+    }
+
+    &__hamburger {
+        background: none;
+        border: none;
+        font-size: $font-lg;
+        cursor: pointer;
+
+        @media (min-width: $break-md) {
+            display: none;
+        }
+    }
+}
+
+// Mobile Menu Overlay
+.mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: $space-4;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+    &.active {
+        transform: translateY(0);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+        
+        a {
+            font-size: $font-lg;
+            font-weight: 600;
+            color: $color-primary-dark;
+        }
+
+        .btn {
+            color: $color-secondary;
+        }
+    }
+}
+
+/* =====================
+      Hero Section
+========================= */
+.hero {
+    padding: $space-2;
+
+    @media (min-width: $break-lg) {
+        padding: $space-4;
+    }
+
+    &__wrapper {
+        background: url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
+        border-radius: 24px;
+        padding: $space-6 $space-3;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: $space-6;
+
+        // Dark overlay for mobile readability
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+
+        @media (min-width: $break-lg) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: $space-8 $space-8;
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-align: left;
+        max-width: 600px;
+    }
+
+    &__subtitle {
+        font-size: $font-sm;
+        opacity: 0.9;
+        margin-bottom: $space-2;
+    }
+
+    &__title {
+        font-size: $font-2xl;
+        line-height: 1.1;
+        font-weight: 700;
+        margin-bottom: $space-4;
+
+        @media (min-width: $break-lg) {
+            font-size: 3.5rem; // Matches desktop scale
+        }
+    }
+    
+    &__cta-box {
+        display: none;
+        @media (min-width: $break-lg) {
+            display: block;
+        }
+    }
+
+    &__form-card {
+        position: relative;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: $space-4;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+
+        @media (min-width: $break-lg) {
+            margin: 0;
+        }
+    }
+
+    &__tags {
+        display: none;
+        position: absolute;
+        top: -50px;
+        right: 0;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        .tag {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: $break-md) {
+            display: none;
+        }
+    }
+}
+
+.request-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    .form__title {
+        font-size: $font-lg;
+        color: $color-primary-dark;
+        margin-bottom: $space-2;
+    }
+
+    label {
+        font-size: $font-xs;
+        color: $color-primary-dark;
+        font-weight: 600;
+    }
+}
